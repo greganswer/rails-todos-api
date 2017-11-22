@@ -1,6 +1,4 @@
 class TodosController < ApplicationController
-end
-class TodosController < ApplicationController
   before_action :set_todo, only: %i(show update destroy)
 
   def index
