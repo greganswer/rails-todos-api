@@ -23,7 +23,10 @@ guard :rspec, cmd: 'RUBYOPT="-W0" bundle exec rspec' do
 
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(%r{^app/controllers/(.+)_(controller)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
-  watch(rails.app_controller)  { "#{rspec.spec_dir}/requests" }
-  watch(rails.routes)          { "#{rspec.spec_dir}/requests" }
-  watch(rails.app_controller)  { "#{rspec.spec_dir}/requests" }
+  
+  watched_folders = [%r{^app/lib/(.+)\.rb}, %r{^app/controllers/concerns/(.+)\.rb}, rails.app_controller, rails.routes]
+  watched_folders.each do |folder|
+    watch(folder) { "#{rspec.spec_dir}/requests" }
+  end
 end
+ 

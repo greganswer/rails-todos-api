@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "bcrypt", "~> 3.1.7"
+gem "jwt"
 gem "rails", "~> 5.0.6"
 gem "pg", "~> 0.18"
 gem "puma", "~> 3.0"
