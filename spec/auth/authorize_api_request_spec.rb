@@ -8,7 +8,7 @@ RSpec.describe AuthorizeApiRequest do
 
   # Create a valid and invalid request object
   subject(:invalid_request_obj) { described_class.new({}) }
-  subject(:request_obj) { described_class.new(header) }
+  subject(:valid_request_obj) { described_class.new(header) }
 
   #
   # WHen the object is executed
@@ -16,7 +16,7 @@ RSpec.describe AuthorizeApiRequest do
   describe "#call" do
     context "when valid request" do
       it "returns user object" do
-        expect(request_obj.call[:user]).to eq(user)
+        expect(valid_request_obj.call[:user]).to eq(user)
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe AuthorizeApiRequest do
 
         it "raises an InvalidToken error" do
           expect { invalid_request_obj.call }
-            .to raise_error(ExceptionHandler::InvalidToken, "Invalid token")
+            .to raise_error(ExceptionHandler::InvalidToken, /Invalid token/)
         end
       end
 
