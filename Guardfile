@@ -1,7 +1,7 @@
 # RUBYOPT="-W0" is used to silence warnings
 # Reference: https://stackoverflow.com/questions/5591509/suppress-ruby-warnings-when-running-specs
 
-ignore([%r{^(bin|config|db|lib|log|public|tmp)/*}])
+ignore([%r{^(bin|db|lib|log|public|tmp)/*}])
 
 guard :rspec, cmd: 'RUBYOPT="-W0" bundle exec rspec' do
   require "guard/rspec/dsl"
