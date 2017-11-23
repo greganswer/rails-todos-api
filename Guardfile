@@ -28,6 +28,7 @@ guard :rspec, cmd: 'RUBYOPT="-W0" bundle exec rspec' do
   dsl.watch_spec_files_for(rails.app_files)
 
   watch(rails.spec_helper)     { rspec.spec_dir }
+  watch(rails.app_controller)  { "spec/controllers/application_controller_spec.rb" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
   
   watched_folders = [%r{^app/lib/(.+)\.rb}, %r{^app/controllers/concerns/(.+)\.rb}, rails.app_controller, rails.routes]
