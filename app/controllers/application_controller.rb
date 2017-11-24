@@ -5,6 +5,10 @@ class ApplicationController < ActionController::API
   before_action :authorize_request
   attr_reader :current_user
 
+  def per_page 
+    params[:per_page].to_i.between?(1, 100) ? params[:per_page].to_i : 20
+  end
+
   #
   # PRIVATE
   #

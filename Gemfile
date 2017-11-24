@@ -12,6 +12,7 @@ gem "jwt"
 gem "rails", "~> 5.0.6"
 gem "pg", "~> 0.18"
 gem "puma", "~> 3.0"
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem "byebug", platform: :mri
